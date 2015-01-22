@@ -3,24 +3,32 @@ $(document).ready(function(){
     cardDeck.spread(); // show it
 
     var hand = [];
+    var computerHand = [];
+
     var showError = function(msg){
         $('#error').html(msg).show();
         setTimeout(function(){
             $('#error').fadeOut('slow');
         },3000);
     }
-    var showHand = function(){
+    var showHands = function(){
         var el = $('#yourHand')
         el.html('');
-        for(var i=0;i<hand.length;i++){
+        for (var i = 0; i < hand.length; i++) {
             el.append(hand[i].getHTML());
+            
+        }
+        el = $('#computerHand')
+        el.html('');
+        for(var i=0;i < computerHand.length;i++){
+            el.append(computerHand[i].getHTML());
         }
     }
     var doShuffle = function(){
         cardDeck.shuffle();
         cardDeck.spread(); // update card table
     }
-    var doDrawCard = function(){
+    var doDrawCard1 = function(){
         var c = cardDeck.draw();
         if(!c){
             showError('no more cards');
@@ -28,7 +36,38 @@ $(document).ready(function(){
         }
         hand[hand.length] = c;
         cardDeck.spread();
-        showHand();
+        showHands();
+    }
+    var doDrawCard2 = function(){
+        var c = cardDeck.draw();
+        if(!c){
+            showError('no more cards');
+            return;
+        }
+        computerHand[computerHand.length] = c;
+        cardDeck.spread();
+        showHands();
+    }
+    var doDeal = function(){
+        var c;
+        for(i = 0; i < 7; i++){
+            c = cardDeck.draw();
+            if(!c){
+                showError('no more cards');
+                return;
+            }
+            hand[hand.length] = c;
+
+           c = cardDeck.draw();
+           if(!c){
+                showError('no more cards');
+                return;
+            }
+            computerHand[computerHand.length] = c;
+
+            cardDeck.spread();
+            showHands();
+        }
     }
     var doOrderByRank = function(){
         cardDeck.orderByRank();
@@ -39,23 +78,35 @@ $(document).ready(function(){
         cardDeck.spread(); // update card table
     }
     $('#shuffler').click(doShuffle);
-    $('#draw').click(doDrawCard);
+    $('#draw1').click(doDrawCard1);
+    $('#draw2').click(doDrawCard2);
     $('#shuffleDraw').click(function(){
         doShuffle();
         doDrawCard();
     });
-    $('#addCard').click(function(){
+    $('#addCard1').click(function(){
         if(!hand.length){
             showError('your hand is empty');
             return;
         }
         var c = hand.pop();
-        showHand();
+        showHands();
+    });
+
+    $('#addCard2').click(function(){
+        if(!computerHand.length){
+            showError('your computer hand is empty');
+            return;
+        }
+        var c = computerHand.pop();
+        showHands();
+
         cardDeck.addCard(c);
         cardDeck.spread();
     });
     $('#orderByRank').click(doOrderByRank);
     $('#orderBySuit').click(doOrderBySuit);
+    $('dealer').click(doDeal);
 
 });
 /*
