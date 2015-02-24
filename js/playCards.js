@@ -92,7 +92,7 @@ $(document).ready(function(){
         }
         var c = hand.pop();
         showHands();
-        discardPile.discard(c);
+        discardPile.discard1(c)
         cardDeck.spread();
     });
 
@@ -103,7 +103,7 @@ $(document).ready(function(){
         }
         var c = computerHand.pop();
         showHands();
-        discardPile.discard(c);
+        discardPile.discard2(c)
         cardDeck.spread();
     });
     $('#orderByRank').click(doOrderByRank);
