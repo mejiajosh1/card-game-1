@@ -85,7 +85,7 @@ $(document).ready(function(){
         doShuffle();
         doDrawCard();
     });
-    $('#discard').click(function(){
+    $('#discard1').click(function(){
         if(!hand.length){
             showError('your hand is empty');
             return;
@@ -96,7 +96,7 @@ $(document).ready(function(){
         cardDeck.spread();
     });
 
-    $('#discard').click(function(){
+    $('#discard2').click(function(){
         if(!computerHand.length){
             showError('your computer hand is empty');
             return;
