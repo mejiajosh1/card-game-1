@@ -103,7 +103,7 @@ $(document).ready(function(){
         }
         var c = computerHand.pop();
         showHands();
-        cardDeck.discardPile();
+        cardDeck.discardPile(c);
         cardDeck.spread();
     });
     $('#orderByRank').click(doOrderByRank);
