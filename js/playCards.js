@@ -24,6 +24,11 @@ $(document).ready(function(){
         for(i=0; i<computerHand.length; i++){
             el.append(computerHand[i].getHTML());
         }
+        el = $('#discardPile');
+        el.html('');
+        for(i=0, i<discardPile.length;i++){
+            el.append(discardPile[i].getHTML());
+        }
     };
     var doShuffle = function(){
         cardDeck.shuffle();
@@ -50,23 +55,14 @@ $(document).ready(function(){
         showHands();
     };
     var doDiscard = function(){
-        var c;
-        c = discardPile.discard();
-        if (!c){
-            showError('no more cards');
-            return;
-        }
-        hand[hand.length] = c;
-        
-        c = discardPile.discard();
-        if (!c){
-            showError('no more cards');
-            return;
-        }
-        computerHand[computerHand.length] = c;
-        
-        discardPile.spread();
-        ShowHands();
+       if(!discardPile.length){
+           showError('Discard pile is empty);
+           return;
+       }
+       var c = discardPile.pop();
+       showHands;
+       discardPile.[discardPile.length] = c;
+       showHands();
     }
     var doDeal = function(){
         var c;
