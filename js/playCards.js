@@ -51,14 +51,14 @@ $(document).ready(function(){
     };
     var doDiscard = function(){
         var c;
-        c = discardPile.discard1();
+        c = discardPile.discard();
         if (!c){
             showError('no more cards');
             return;
         }
         hand[hand.length] = c;
         
-        c = discardPile.discard2();
+        c = discardPile.discard();
         if (!c){
             showError('no more cards');
             return;
