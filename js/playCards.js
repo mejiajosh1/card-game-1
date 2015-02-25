@@ -111,7 +111,7 @@ $(document).ready(function(){
         }
         var c = hand.pop();
         showHands();
-        discardPile.spread();
+        doDiscard.spread();
     });
 
     $('#discard2').click(function(){
@@ -121,7 +121,7 @@ $(document).ready(function(){
         }
         var c = computerHand.pop();
         showHands();
-        discardPile.spread();
+        doDiscard.spread();
     });
     $('#orderByRank').click(doOrderByRank);
     $('#orderBySuit').click(doOrderBySuit);
