@@ -49,6 +49,25 @@ $(document).ready(function(){
         cardDeck.spread();
         showHands();
     };
+    var doDiscard = function(){
+        var c;
+        c = discardPile.discard1();
+        if (!c){
+            showError('no more cards');
+            return;
+        }
+        hand[hand.length] = c;
+        
+        c = discardPile.discard2();
+        if (!c){
+            showError('no more cards');
+            return;
+        }
+        computerHand[computerHand.length] = c;
+        
+        discardPile.spread();
+        ShowHands();
+    }
     var doDeal = function(){
         var c;
         for (i = 0; i < 7; i++){
