@@ -111,8 +111,7 @@ $(document).ready(function(){
         }
         var c = hand.pop();
         showHands();
-        discardPile.discard1(c)
-        cardDeck.spread();
+        discardPile.spread();
     });
 
     $('#discard2').click(function(){
@@ -122,8 +121,7 @@ $(document).ready(function(){
         }
         var c = computerHand.pop();
         showHands();
-        discardPile.discard2(c)
-        cardDeck.spread();
+        discardPile.spread();
     });
     $('#orderByRank').click(doOrderByRank);
     $('#orderBySuit').click(doOrderBySuit);
