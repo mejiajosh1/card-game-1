@@ -56,7 +56,7 @@ $(document).ready(function(){
     };
     var doDiscard = function(){
        if(!discardPile.length){
-           showError('Discard pile is empty);
+           showError('Discard pile is empty');
            return;
        }
        var c = discardPile.pop();
